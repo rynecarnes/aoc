@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class SonarSweep {
+public class SonarSweep2 {
     
     public static void main(String[] args) {
         try {
@@ -17,8 +17,10 @@ public class SonarSweep {
                 depths.add(num);
             }
 
-            for (int i = 0; i < depths.size() - 1; i++) {
-                if (depths.get(i) < depths.get(i + 1)) {
+            for (int i = 2; i < depths.size() - 1; i++) {
+                int currentWindow = depths.get(i - 1) + depths.get(i) + depths.get(i + 1);
+                int prevWindow = depths.get(i - 2) + depths.get(i - 1) + depths.get(i);
+                if (currentWindow > prevWindow) {
                     count++;
                 }
             }
